@@ -1,0 +1,94 @@
+Considerando o algoritmo abaixo, complete o código do método &quot;main&quot; de maneira que
+sejam desenvolvidos os procedimentos de empilhar e desempilhar de uma pilha a
+partir dos métodos de uma fila. Para isto, usaremos duas filas (&quot;f1&quot; e &quot;f2&quot;, já
+definidas no método &quot;main&quot;):
+[
+Obs: O objetivo é EMPILHAR OS DADOS mas USANDO os métodos da estrutura de
+FILA.
+Ex: entradas = A
+B
+C
+Saída = C
+B
+A
+]
+class No{
+public:
+char nome;
+No *prox;
+No(char n){
+nome=n;
+prox=NULL;
+}
+
+};
+class Fila{
+public:
+No *inicio;
+No *fim;
+Fila(){
+inicio = NULL;
+fim = NULL;
+}
+
+//inserir um elemento no topo da fila
+void insereNaFila(char n){
+No *novo= new No(n);
+if (inicio==NULL){ //fila vazia
+inicio = novo;
+fim = novo;
+}
+else{ // insere o elemento e modifica o topo
+fim-&gt;prox=novo;
+fim=novo;
+
+2
+
+}
+}
+//retirar o elemento do topo
+char retiraDaFila(){
+No *el;
+char nome;
+if (inicio!=NULL){
+el=inicio;
+nome=el-&gt;nome;
+inicio=inicio-&gt;prox;
+free(el);
+
+}
+
+return nome;
+}
+int fila_vazia(){
+return (inicio==NULL);
+}
+void mostra(){
+No *atual;
+atual=inicio;
+cout&lt;&lt;&quot;\n\n--------Mostra a Fila---------------\n\n&quot;;
+while (atual!=NULL){
+printf(&quot;\nNome %c\n&quot;,atual-&gt;nome);
+
+atual = atual-&gt;prox;
+}
+}
+};
+
+main(){
+Fila *f1=new Fila();
+Fila *f2=new Fila();
+int resp;
+char letra;
+do {
+cout&lt;&lt;&quot;\nDigite a letra:&quot;;
+cin&gt;&gt;letra; // Cada letra lida deve ser empilhada, mas so e possível
+// usar os metodos da classe Fila
+// Implemente a resposta da questao aqui
+
+3
+
+cout&lt;&lt;&quot;\nDeseja continuar (1-Sim 2-Nao)?&quot;;
+cin&gt;&gt;resp;
+}while(resp==1);
+}
